@@ -65,6 +65,13 @@ public abstract class ClientTracer extends AnnotationSubmitter {
     }
 
     /**
+     * Clears current span.
+     */
+    public void clearCurrentSpan() {
+        spanAndEndpoint().state().setCurrentClientSpan(null);
+    }
+
+    /**
      * Sets 'client sent' event for current thread.
      */
     public void setClientSent() {

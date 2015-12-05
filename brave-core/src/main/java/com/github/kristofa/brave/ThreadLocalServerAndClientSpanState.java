@@ -105,7 +105,11 @@ public final class ThreadLocalServerAndClientSpanState implements ServerAndClien
      */
     @Override
     public void setCurrentClientSpan(final Span span) {
-        currentClientSpan.set(span);
+        if (span == null) {
+            currentClientSpan.remove();
+        } else {
+            currentClientSpan.set(span);
+        }
     }
 
     @Override
